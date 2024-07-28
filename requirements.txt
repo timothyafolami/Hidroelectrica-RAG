@@ -1,0 +1,16 @@
+streamlit
+groq
+langchain_community
+langchain
+langchain_groq
+langchain_core
+langchain_openai
+llama-parse 
+python-dotenv
+streamlit-chat
+notebook
+langchain 
+faiss-cpu 
+transformers 
+langgraph
+tavily-python
