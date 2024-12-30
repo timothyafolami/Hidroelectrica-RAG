@@ -1,13 +1,19 @@
-This is a multiquery RAG system 
 
-- For every user query, four queries will be generated
-- Database will be queried with the five queries. 
-- Response collected will be gathered/merged
-- AI will filter the response to get the one that matches the initial query. 
-- Tavily will be used for internet access
-- DuckDuckSearch will be used also
+Hidroelectrica Chat App
+
+- User Input 
+- Input analysis AI -- Decision Maker process.. 
+    1. Direct Answer 
+    2. Internet Search Answer 
+    3. Vector DB + Internet Search Response. 
+
+-- 1. Direct Answer: Here user get answers for plesantaries and all. 
+-- 2. Internet search is made and answer is gotten, AI uses this to answer questions correcrly 
+-- 3. When things related to Hidroelectrica are mentioned in the input, then there's a need to search the internet and then vector DB.
 
 
-- Ai system to be used: LLama 3 7B, with GroqChat
-- Vector Database -- FAISS 
-- Framework - Langchain
+-- Function Calls: Tools needed for each end will be supplied from the function calls.. 
+
+-- Database Query: User input will be rewritten, two messages will be extracted as a multiquery thing, a translation function will translate, the vector DB will be searched, the top twp responses from each of them will be taken, another process will translate back to english, and summarize into a single text. This is the DB process. 
+
+-- There's going to be a Answer AI, that generates the final answer based on either of the inputs we are getting. This is the answer we are sending back to the user. 

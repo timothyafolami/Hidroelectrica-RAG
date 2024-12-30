@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_chat import message
-from utils import run_graph
 import random
+from src.ai_agent import chat_response
 
 
 st.set_page_config(page_title='🤖 Hidroelectrica Chat APP', layout='centered', page_icon='🤖')
@@ -22,13 +22,7 @@ if "messages" not in st.session_state:
         st.session_state.messages = [INIT_MESSAGE]
 
 def generate_response(input_text):
-    thread_id = st.session_state.session_id
-    thread = {"configurable": {"thread_id": thread_id}}
-    # adding try and except block to handle the error
-    try:
-        output = run_graph(input_text, thread=thread)
-    except Exception as e:
-        output = f"An error occurred, correct the input and try again (you can just try again)."
+    output = chat_response(user_query=input_text)
     return output
 
 # Display chat messages

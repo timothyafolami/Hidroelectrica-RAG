@@ -1,0 +1,39 @@
+name: Lint Code Base
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Run the Super-Linter
+      - name: Run Super-Linter
+        uses: github/super-linter@v5
+        env:
+          # Required: GitHub token for lint annotations
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          # Optional: Set linter rules directory (default: .github/linters)
+          DEFAULT_WORKSPACE: ${{ github.workspace }}
+          
+          # Optional: Specify languages or linters to run (comma-separated)
+          # Example: "PYTHON,JAVASCRIPT,YAML"
+          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_PYTHON: true
+          VALIDATE_JAVASCRIPT_ES: true
+          VALIDATE_YAML: true
+
+          # Optional: Enable verbose logging
+          LINTER_LOG_LEVEL: DEBUG
